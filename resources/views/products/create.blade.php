@@ -1,59 +1,67 @@
 @extends('products.layout')
 
 @section('content')
-<div class="flex justify-between items-center mb-6 border-b pb-4">
-    <h2 class="text-2xl font-bold text-gray-700">Add New Product</h2>
-    <a class="btn-secondary" href="{{ route('products.index') }}">
-        &larr; Back to List
-    </a>
-</div>
-
-@if ($errors->any())
-    <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded shadow-sm animate-fade-in" role="alert">
-        <strong class="font-bold">Whoops!</strong>
-        <span class="block sm:inline">There were some problems with your input.</span>
-        <ul class="mt-2 list-disc list-inside text-sm">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+<div class="max-w-4xl mx-auto opacity-0 animate-slide-up">
+    <div class="flex justify-between items-center mb-10 pb-6 border-b border-white/10">
+        <h2 class="text-4xl font-extrabold text-white tracking-tight">Create <span class="text-gradient">Entry</span></h2>
+        <a class="btn-outline" href="{{ route('products.index') }}">
+            &larr; Back to Database
+        </a>
     </div>
-@endif
 
-<form action="{{ route('products.store') }}" method="POST" class="space-y-6">
-    @csrf
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="col-span-1 md:col-span-2">
-            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Product Name <span class="text-red-500">*</span></label>
-            <input type="text" name="name" id="name" class="input-field" placeholder="e.g. iPhone 15" value="{{ old('name') }}">
-        </div>
-
-        <div class="col-span-1 md:col-span-2">
-            <label for="description" class="block text-sm font-medium text-gray-700 mb-1">Description</label>
-            <textarea name="description" id="description" rows="4" class="input-field" placeholder="Brief details about the product...">{{ old('description') }}</textarea>
-        </div>
-
-        <div class="col-span-1">
-            <label for="price" class="block text-sm font-medium text-gray-700 mb-1">Price (₹) <span class="text-red-500">*</span></label>
-            <div class="relative rounded-md shadow-sm">
-                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <span class="text-gray-500 sm:text-sm">₹</span>
+    @if ($errors->any())
+        <div class="glass-panel border-rose-500/30 bg-rose-500/10 p-6 mb-10 animate-fade-in rounded-2xl">
+            <div class="flex items-center mb-4">
+                <div class="w-10 h-10 rounded-full bg-rose-500/20 flex items-center justify-center mr-4 text-rose-400 shadow-[0_0_15px_rgba(244,63,94,0.3)]">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
                 </div>
-                <input type="number" step="0.01" name="price" id="price" class="input-field pl-7" placeholder="0.00" value="{{ old('price') }}">
+                <strong class="font-extrabold text-xl text-rose-300">Validation Error</strong>
+            </div>
+            <ul class="list-disc list-inside text-base text-rose-200/80 ml-14 space-y-2">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <form action="{{ route('products.store') }}" method="POST" class="glass-panel p-10 space-y-8 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none"></div>
+        @csrf
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
+            <div class="col-span-1 md:col-span-2">
+                <label for="name" class="block text-sm font-bold text-gray-300 mb-3 tracking-wide uppercase">Product Name <span class="text-rose-500">*</span></label>
+                <input type="text" name="name" id="name" class="input-premium" placeholder="e.g. Next-Gen Smartphone" value="{{ old('name') }}">
+            </div>
+
+            <div class="col-span-1 md:col-span-2">
+                <label for="description" class="block text-sm font-bold text-gray-300 mb-3 tracking-wide uppercase">Description</label>
+                <textarea name="description" id="description" rows="5" class="input-premium resize-none" placeholder="Provide technical specifications...">{{ old('description') }}</textarea>
+            </div>
+
+            <div class="col-span-1">
+                <label for="price" class="block text-sm font-bold text-gray-300 mb-3 tracking-wide uppercase">Price (₹) <span class="text-rose-500">*</span></label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
+                        <span class="text-gray-400 text-lg font-bold">₹</span>
+                    </div>
+                    <input type="number" step="0.01" name="price" id="price" class="input-premium pl-12" placeholder="0.00" value="{{ old('price') }}">
+                </div>
+            </div>
+
+            <div class="col-span-1">
+                <label for="quantity" class="block text-sm font-bold text-gray-300 mb-3 tracking-wide uppercase">Initial Quantity <span class="text-rose-500">*</span></label>
+                <input type="number" name="quantity" id="quantity" class="input-premium" placeholder="0" value="{{ old('quantity') }}">
             </div>
         </div>
 
-        <div class="col-span-1">
-            <label for="quantity" class="block text-sm font-medium text-gray-700 mb-1">Quantity <span class="text-red-500">*</span></label>
-            <input type="number" name="quantity" id="quantity" class="input-field" placeholder="0" value="{{ old('quantity') }}">
+        <div class="pt-8 flex justify-end border-t border-white/10 relative z-10">
+            <button type="submit" class="btn-premium shadow-[0_10px_30px_rgba(99,102,241,0.4)] text-lg">
+                Initialize Product
+                <svg class="w-5 h-5 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </button>
         </div>
-    </div>
-
-    <div class="pt-4 flex justify-end">
-        <button type="submit" class="btn-primary w-full md:w-auto px-8 py-3 text-lg">
-            Save Product
-        </button>
-    </div>
-</form>
+    </form>
+</div>
 @endsection

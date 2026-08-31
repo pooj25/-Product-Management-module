@@ -1,99 +1,102 @@
 @extends('products.layout')
 
 @section('content')
-<div class="space-y-8">
-    <div class="border-b pb-4">
-        <h2 class="text-3xl font-extrabold text-gray-800">Dashboard Overview</h2>
-        <p class="text-gray-500 mt-1">Get a bird's-eye view of your inventory.</p>
+<div class="space-y-16">
+    <div class="text-center max-w-4xl mx-auto opacity-0 animate-slide-up" style="animation-delay: 0.1s;">
+        <h2 class="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+            Command Your <br><span class="text-gradient">Inventory</span>
+        </h2>
+        <p class="text-xl md:text-2xl text-gray-400 leading-relaxed font-light">Experience the future of product management. Monitor your stock, evaluate your assets, and stay ahead of shortages in real-time.</p>
     </div>
 
     <!-- Stats Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 opacity-0 animate-slide-up" style="animation-delay: 0.3s;">
         <!-- Total Products -->
-        <div class="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl p-6 shadow-lg text-white transform transition duration-500 hover:scale-105">
-            <div class="flex items-center justify-between">
+        <div class="glass-panel p-8 relative overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="flex items-center justify-between relative z-10">
                 <div>
-                    <h3 class="text-lg font-medium text-blue-100">Total Products</h3>
-                    <p class="text-5xl font-black mt-2">{{ $totalProducts }}</p>
+                    <p class="text-sm font-bold tracking-wider text-gray-400 uppercase mb-2">Total Products</p>
+                    <h3 class="text-6xl font-black text-white drop-shadow-lg">{{ $totalProducts }}</h3>
                 </div>
-                <div class="p-3 bg-white bg-opacity-20 rounded-full">
-                    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                <div class="p-4 bg-primary/20 rounded-2xl border border-primary/30 text-primary shadow-[0_0_15px_rgba(99,102,241,0.3)] group-hover:scale-110 transition-transform duration-300">
+                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
                 </div>
             </div>
         </div>
 
         <!-- Total Quantity -->
-        <div class="bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl p-6 shadow-lg text-white transform transition duration-500 hover:scale-105">
-            <div class="flex items-center justify-between">
+        <div class="glass-panel p-8 relative overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
+            <div class="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="flex items-center justify-between relative z-10">
                 <div>
-                    <h3 class="text-lg font-medium text-purple-100">Total Quantity</h3>
-                    <p class="text-5xl font-black mt-2">{{ $totalQuantity }}</p>
+                    <p class="text-sm font-bold tracking-wider text-gray-400 uppercase mb-2">Total Quantity</p>
+                    <h3 class="text-6xl font-black text-white drop-shadow-lg">{{ $totalQuantity }}</h3>
                 </div>
-                <div class="p-3 bg-white bg-opacity-20 rounded-full">
-                    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                <div class="p-4 bg-purple-500/20 rounded-2xl border border-purple-500/30 text-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.3)] group-hover:scale-110 transition-transform duration-300">
+                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
                 </div>
             </div>
         </div>
         
         <!-- Total Value -->
-        <div class="bg-gradient-to-br from-emerald-400 to-teal-500 rounded-2xl p-6 shadow-lg text-white transform transition duration-500 hover:scale-105">
-            <div class="flex items-center justify-between">
+        <div class="glass-panel p-8 relative overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
+            <div class="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="flex items-center justify-between relative z-10">
                 <div>
-                    <h3 class="text-lg font-medium text-teal-100">Total Inventory Value</h3>
-                    <p class="text-4xl font-black mt-2">₹{{ number_format($totalValue, 2) }}</p>
+                    <p class="text-sm font-bold tracking-wider text-gray-400 uppercase mb-2">Inventory Value</p>
+                    <h3 class="text-5xl font-black text-white drop-shadow-lg">₹{{ number_format($totalValue, 2) }}</h3>
                 </div>
-                <div class="p-3 bg-white bg-opacity-20 rounded-full">
-                    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <div class="p-4 bg-accent/20 rounded-2xl border border-accent/30 text-accent shadow-[0_0_15px_rgba(236,72,153,0.3)] group-hover:scale-110 transition-transform duration-300">
+                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Low Stock Alerts -->
-    <div class="mt-8 bg-gray-50 rounded-2xl p-6 border border-gray-100">
-        <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
-            <span class="bg-red-100 text-red-500 p-2 rounded-lg mr-3">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-            </span>
-            Low Stock Alerts (Quantity &lt; 5)
-        </h3>
+    <div class="glass-panel p-10 opacity-0 animate-slide-up" style="animation-delay: 0.5s;">
+        <div class="flex items-center justify-between mb-8 border-b border-white/10 pb-6">
+            <h3 class="text-3xl font-extrabold text-white flex items-center">
+                <span class="w-4 h-4 rounded-full bg-rose-500 mr-4 shadow-[0_0_15px_rgba(244,63,94,1)] animate-pulse"></span>
+                Critical Stock Alerts
+            </h3>
+        </div>
         
         @if($lowStockProducts->count() > 0)
-            <div class="bg-white border border-gray-200 shadow-sm rounded-xl overflow-hidden">
-                <ul class="divide-y divide-gray-100">
-                    @foreach($lowStockProducts as $item)
-                        <li class="p-5 flex justify-between items-center hover:bg-red-50 transition duration-150">
-                            <div>
-                                <p class="text-base font-bold text-gray-900">{{ $item->name }}</p>
-                                <p class="text-sm text-gray-500">Price: ₹{{ number_format($item->price, 2) }}</p>
-                            </div>
-                            <div class="flex flex-col sm:flex-row items-end sm:items-center space-y-2 sm:space-y-0 sm:space-x-4">
-                                <span class="px-3 py-1 inline-flex text-sm leading-5 font-bold rounded-full bg-red-100 text-red-700 animate-pulse-slow">
-                                    Only {{ $item->quantity }} left!
-                                </span>
-                                <a href="{{ route('products.edit', $item->id) }}" class="text-indigo-600 hover:text-indigo-800 font-semibold text-sm underline decoration-indigo-300 underline-offset-4">Restock &rarr;</a>
-                            </div>
-                        </li>
-                    @endforeach
-                </ul>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                @foreach($lowStockProducts as $item)
+                    <div class="bg-white/5 border border-white/10 rounded-3xl p-6 hover:bg-white/10 transition-colors group relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-rose-500/10 rounded-full blur-2xl -mr-10 -mt-10 group-hover:bg-rose-500/20 transition-colors"></div>
+                        <div class="flex justify-between items-start mb-4 relative z-10">
+                            <h4 class="text-2xl font-bold text-white">{{ $item->name }}</h4>
+                            <span class="px-4 py-1.5 text-sm font-bold rounded-full bg-rose-500/20 text-rose-400 border border-rose-500/30 shadow-[0_0_10px_rgba(244,63,94,0.2)]">
+                                {{ $item->quantity }} Left
+                            </span>
+                        </div>
+                        <p class="text-gray-400 text-base mb-8 relative z-10 font-medium">Price: ₹{{ number_format($item->price, 2) }}</p>
+                        <a href="{{ route('products.edit', $item->id) }}" class="inline-flex items-center text-base font-bold text-primary group-hover:text-white transition-colors relative z-10 bg-primary/10 px-4 py-2 rounded-xl">
+                            Restock Now 
+                            <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                    </div>
+                @endforeach
             </div>
         @else
-            <div class="bg-emerald-50 border border-emerald-200 text-emerald-800 p-6 rounded-xl flex items-center shadow-sm">
-                <div class="bg-emerald-100 p-2 rounded-full mr-4 text-emerald-600">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <div class="bg-emerald-500/10 border border-emerald-500/20 rounded-3xl p-12 flex flex-col items-center justify-center text-center">
+                <div class="w-20 h-20 bg-emerald-500/20 rounded-full flex items-center justify-center mb-6 text-emerald-400 shadow-[0_0_30px_rgba(16,185,129,0.3)]">
+                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                 </div>
-                <div>
-                    <h4 class="text-lg font-bold">All Good!</h4>
-                    <p class="text-emerald-700 text-sm mt-1">All your products are well stocked. No items have less than 5 quantity.</p>
-                </div>
+                <h4 class="text-3xl font-extrabold text-white mb-3">All Systems Go</h4>
+                <p class="text-gray-400 text-lg">Inventory is extremely healthy. No items are running low.</p>
             </div>
         @endif
     </div>
     
-    <div class="mt-8 pt-6 border-t text-center">
-        <a href="{{ route('products.index') }}" class="btn-primary inline-flex items-center text-lg px-8 py-4">
-            Manage All Products
-            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+    <div class="mt-16 text-center opacity-0 animate-slide-up" style="animation-delay: 0.7s;">
+        <a href="{{ route('products.index') }}" class="btn-premium text-lg px-10 py-4 shadow-[0_10px_30px_rgba(99,102,241,0.4)]">
+            Access Database
+            <svg class="w-6 h-6 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
         </a>
     </div>
 </div>
