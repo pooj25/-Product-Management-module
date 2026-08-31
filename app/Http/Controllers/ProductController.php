@@ -2,60 +2,65 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use App\Models\Product;
+use App\Models\Category;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
+        $products = Product::with('category')->get();
         return view('products.index', compact('products'));
     }
 
     public function create()
     {
-        return view('products.create');
+        $categories = Category::where('status', 'Active')->get();
+        return view('products.create', compact('categories'));
     }
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'name' => 'required',
-            'description' => 'nullable',
             'price' => 'required|numeric',
             'quantity' => 'required|integer',
+            'category_id' => 'required|exists:categories,id',
         ]);
 
-        Product::create($validatedData);
+        Product::create($request->all());
 
-        return redirect()->route('products.index')->with('success', 'Product created successfully.');
+        return redirect()->route('products.index')
+                         ->with('success', 'Product created successfully.');
     }
 
     public function edit(Product $product)
     {
-        return view('products.edit', compact('product'));
+        $categories = Category::where('status', 'Active')->get();
+        return view('products.edit', compact('product', 'categories'));
     }
 
     public function update(Request $request, Product $product)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'name' => 'required',
-            'description' => 'nullable',
             'price' => 'required|numeric',
             'quantity' => 'required|integer',
+            'category_id' => 'required|exists:categories,id',
         ]);
 
-        $product->update($validatedData);
+        $product->update($request->all());
 
-        return redirect()->route('products.index')->with('success', 'Product updated successfully.');
+        return redirect()->route('products.index')
+                         ->with('success', 'Product updated successfully');
     }
 
     public function destroy(Product $product)
     {
         $product->delete();
 
-        return redirect()->route('products.index')->with('success', 'Product deleted successfully.');
+        return redirect()->route('products.index')
+                         ->with('success', 'Product deleted successfully');
     }
 }
