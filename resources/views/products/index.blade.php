@@ -39,7 +39,7 @@
                 <tbody class="divide-y divide-white/5">
                     @foreach ($products as $product)
                     <tr class="hover:bg-white/5 transition-colors duration-200 group">
-                        <td class="px-10 py-7 text-base text-gray-500 font-mono">{{ $product->id }}</td>
+                        <td class="px-10 py-7 text-base text-gray-500 font-mono">{{ $loop->iteration }}</td>
                         <td class="px-10 py-7 text-base font-extrabold text-white">{{ $product->name }}</td>
                         <td class="px-10 py-7 text-base text-gray-400 max-w-[250px] truncate" title="{{ $product->description }}">{{ $product->description ?? '—' }}</td>
                         <td class="px-10 py-7 text-base font-bold text-accent">₹{{ number_format($product->price, 2) }}</td>
