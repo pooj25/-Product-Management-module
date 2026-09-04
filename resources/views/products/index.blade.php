@@ -4,7 +4,6 @@
 
 <div class="flex flex-col md:flex-row justify-between items-center mb-10 opacity-0 animate-slide-up">
 
-```
 <div>
     <h2 class="text-5xl font-extrabold text-slate-900 tracking-tight mb-3">
         Product <span class="text-gradient">Database</span>
@@ -39,7 +38,7 @@
     </a>
 
 </div>
-```
+
 
 </div>
 
@@ -47,7 +46,7 @@
 
 <div class="glass-panel border-emerald-500/30 bg-emerald-500/10 p-6 mb-8 opacity-0 animate-fade-in flex items-center rounded-2xl">
 
-```
+
 <div class="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center mr-5 text-emerald-500">
 
     <svg
@@ -69,7 +68,7 @@
 <p class="font-bold text-lg text-emerald-800">
     {{ $message }}
 </p>
-```
+
 
 </div>
 
@@ -77,7 +76,7 @@
 
 <div class="glass-panel p-6 mb-8 opacity-0 animate-slide-up">
 
-```
+
 <form
     method="GET"
     action="{{ route('products.index') }}"
@@ -226,13 +225,13 @@
     </div>
 
 </form>
-```
+
 
 </div>
 
 <div class="glass-panel overflow-hidden opacity-0 animate-slide-up">
 
-```
+
 <div class="overflow-x-auto">
 
     <table class="w-full text-left whitespace-nowrap">
@@ -466,7 +465,7 @@
     </table>
 
 </div>
-```
+
 
 </div>
 
@@ -474,7 +473,7 @@
 
 <div class="flex flex-col md:flex-row justify-between items-center mt-8 gap-5">
 
-```
+
 <p class="text-slate-500 font-medium">
 
     Showing
@@ -502,7 +501,7 @@
 <div>
     {{ $products->links() }}
 </div>
-```
+
 
 </div>
 
